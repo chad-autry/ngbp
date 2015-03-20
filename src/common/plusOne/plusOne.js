@@ -1,4 +1,5 @@
-angular.module( 'plusOne', [] )
+var angular = require('angular');
+module.exports = angular.module( 'plusOne', [] )
 
 .directive( 'plusOne', function() {
   return {

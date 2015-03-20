@@ -1,9 +1,14 @@
+'use strict';
+
+var angular = require('angular'),
+    ui_router = require('angular-ui-router'),
+    app_home = require('./home/home'),
+    app_about = require('./about/about');
+
 angular.module( 'ngBoilerplate', [
-  'templates-app',
-  'templates-common',
-  'ngBoilerplate.home',
-  'ngBoilerplate.about',
-  'ui.router'
+  app_home.name,
+  app_about.name,
+  ui_router
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {

@@ -1,3 +1,7 @@
+var angular = require('angular');
+var template = require("./home.tpl.html");
+var plusOne = require("../../common/plusOne/plusOne");
+var ui_router = require('angular-ui-router');
 /**
  * Each section of the site has its own module. It probably also has
  * submodules, though this boilerplate is too simple to demonstrate it. Within
@@ -12,9 +16,10 @@
  * The dependencies block here is also where component dependencies should be
  * specified, as shown below.
  */
-angular.module( 'ngBoilerplate.home', [
-  'ui.router',
-  'plusOne'
+module.exports = angular.module( 'ngBoilerplate.home', [
+  ui_router,
+  plusOne.name,
+  template.name
 ])
 
 /**
@@ -28,7 +33,7 @@ angular.module( 'ngBoilerplate.home', [
     views: {
       "main": {
         controller: 'HomeCtrl',
-        templateUrl: 'home/home.tpl.html'
+        templateUrl: 'home.tpl.html'
       }
     },
     data:{ pageTitle: 'Home' }

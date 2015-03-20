@@ -1,7 +1,11 @@
-angular.module( 'ngBoilerplate.about', [
-  'ui.router',
-  'placeholders',
-  'ui.bootstrap'
+var angular = require('angular');
+var template = require("./about.tpl.html");
+var ui_router = require('angular-ui-router');
+var ui_bootstrap = require( 'angular-bootstrap-npm' );
+module.exports = angular.module( 'ngBoilerplate.about', [
+  ui_router,
+  ui_bootstrap,
+  template.name
 ])
 
 .config(function config( $stateProvider ) {
@@ -10,7 +14,7 @@ angular.module( 'ngBoilerplate.about', [
     views: {
       "main": {
         controller: 'AboutCtrl',
-        templateUrl: 'about/about.tpl.html'
+        templateUrl: 'about.tpl.html'
       }
     },
     data:{ pageTitle: 'What is It?' }
