@@ -1,10 +1,10 @@
 var angular = require('angular');
 var template = require("./about.tpl.html");
 var ui_router = require('angular-ui-router');
-var ui_bootstrap = require( 'angular-bootstrap-npm' );
+var ui_bootstrap_dropdown = require('ui.bootstrap.dropdown');
 module.exports = angular.module( 'ngBoilerplate.about', [
   ui_router,
-  ui_bootstrap,
+  ui_bootstrap_dropdown,
   template.name
 ])
 
