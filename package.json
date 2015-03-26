@@ -43,13 +43,23 @@
     ]
   },
   "browser": {
-    "ui.bootstrap.dropdown": "./node_modules/angular-bootstrap/src/dropdown/dropdown.js"
+    "ui.bootstrap.dropdown": "./node_modules/angular-bootstrap/src/dropdown/dropdown.js",
+    "ui.bootstrap.collapse": "./node_modules/angular-bootstrap/src/collapse/collapse.js",
+    "ui.bootstrap.transition": "./node_modules/angular-bootstrap/src/transition/transition.js"
     
   },
   "browserify-shim": {
     "ui.bootstrap.dropdown": {
         "depends": ["angular"],
         "exports": "angular.module('ui.bootstrap.dropdown').name"
+    },
+    "ui.bootstrap.transition": {
+        "depends": ["angular"],
+        "exports": "angular.module('ui.bootstrap.transition').name"
+    },
+    "ui.bootstrap.collapse": {
+            "depends": ["angular","ui.bootstrap.transition"],
+            "exports": "angular.module('ui.bootstrap.collapse').name"
     }
   }
 }

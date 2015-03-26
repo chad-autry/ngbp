@@ -3,12 +3,14 @@
 var angular = require('angular'),
     ui_router = require('angular-ui-router'),
     app_home = require('./home/home'),
-    app_about = require('./about/about');
+    app_about = require('./about/about'),
+    ui_bootstrap_collapse =  require('ui.bootstrap.collapse');
 
 angular.module( 'ngBoilerplate', [
   app_home.name,
   app_about.name,
-  ui_router
+  ui_router,
+  ui_bootstrap_collapse
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
