@@ -1,22 +1,28 @@
 {
-  "author": "Josh David Miller",
+  "author": "Chad Autry",
   "name": "ngbp",
   "version": "0.3.2",
-  "homepage": "https://github.com/ngbp/ngbp",
+  "homepage": "https://github.com/chad-autry/ngbp",
   "licenses": {
     "type": "MIT",
-    "url": "https://raw.github.com/ngbp/ngbp/master/LICENSE"
+    "url": "https://raw.github.com/chad-autry/ngbp/master/LICENSE"
   },
-  "bugs": "https://github.com/ngbp/ngbp/issues",
+  "bugs": "https://github.com/chad-autry/ngbp/issues",
   "repository": {
     "type": "git",
     "url": "git@github.com:ngbp/ngbp.git"
   },
   "scripts": {
     "test": "echo %npm_package_config_build_dir%",
+    "watch:test": "parallelshell \"npm run watch:specs\" \"npm run watch:karma\"",
+    "jshint": "jshint ./src/app",
+    "watch:karma": "karma start karma-conf.js",
+    "karma:single": "karma start karma-conf.js --log-level debug --single-run",
     "clean": "rimraf .build/*",
     "less": "lessc src/less/main.less > build/styles.css",
-    "build": "browserify -t browserify-ng-html2js src/app/app.js --debug -o build/bundle.js"
+    "build:specs": "browserify src/**/*.spec.js --debug -o build/specs.js",
+    "watch:specs": "watchify src/**/*.spec.js --debug -o build/specs.js",
+    "build": "browserify src/app/app.js --debug -o build/bundle.js"
   },
   "dependencies": {
     "angular": "^1.3.14",
@@ -25,16 +31,26 @@
     "bootstrap": "^3.3.4"
   },
   "devDependencies": {
-    "browserify": "^9.0.3",
+    "angular-mocks": "^1.3.15",
+    "browserify": "git+https://github.com/substack/node-browserify",
     "browserify-ng-html2js": "^1.0.0",
     "browserify-shim": "^3.8.3",
     "jshint": "^2.6.3",
     "karma": "^0.12.9",
+    "karma-cli": "0.0.4",
     "karma-firefox-launcher": "^0.1.3",
     "karma-jasmine": "^0.1.5",
     "less": "^2.4.0",
+    "parallelshell": "^1.1.1",
     "rimraf": "^2.2.8",
-    "stdout": "0.0.3"
+    "stdout": "0.0.3",
+    "watchify": "^3.1.0"
+  },
+  "jshintConfig": {
+    "node": "true",
+    "predef": [
+      "document"
+    ]
   },
   "browserify": {
     "transform": [
@@ -46,20 +62,26 @@
     "ui.bootstrap.dropdown": "./node_modules/angular-bootstrap/src/dropdown/dropdown.js",
     "ui.bootstrap.collapse": "./node_modules/angular-bootstrap/src/collapse/collapse.js",
     "ui.bootstrap.transition": "./node_modules/angular-bootstrap/src/transition/transition.js"
-    
   },
   "browserify-shim": {
     "ui.bootstrap.dropdown": {
-        "depends": ["angular"],
-        "exports": "angular.module('ui.bootstrap.dropdown').name"
+      "depends": [
+        "angular"
+      ],
+      "exports": "angular.module('ui.bootstrap.dropdown').name"
     },
     "ui.bootstrap.transition": {
-        "depends": ["angular"],
-        "exports": "angular.module('ui.bootstrap.transition').name"
+      "depends": [
+        "angular"
+      ],
+      "exports": "angular.module('ui.bootstrap.transition').name"
     },
     "ui.bootstrap.collapse": {
-            "depends": ["angular","ui.bootstrap.transition"],
-            "exports": "angular.module('ui.bootstrap.collapse').name"
+      "depends": [
+        "angular",
+        "ui.bootstrap.transition"
+      ],
+      "exports": "angular.module('ui.bootstrap.collapse').name"
     }
   }
 }

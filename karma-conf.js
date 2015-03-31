@@ -3,26 +3,16 @@ module.exports = function ( karma ) {
     /** 
      * From where to look for files, starting with the location of this file.
      */
-    basePath: '../',
+    basePath: '',
 
     /**
      * This is the list of file patterns to load into the browser during testing.
      */
     files: [
-      <% scripts.forEach( function ( file ) { %>'<%= file %>',
-      <% }); %>
-      'src/**/*.js',
-      'src/**/*.coffee',
-    ],
-    exclude: [
-      'src/assets/**/*.js'
+      'build/specs.js'
     ],
     frameworks: [ 'jasmine' ],
-    plugins: [ 'karma-jasmine', 'karma-firefox-launcher', 'karma-coffee-preprocessor' ],
-    preprocessors: {
-      '**/*.coffee': 'coffee',
-    },
-
+    plugins: [ 'karma-jasmine', 'karma-firefox-launcher'],
     /**
      * How to report, by default.
      */

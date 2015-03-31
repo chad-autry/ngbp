@@ -6,7 +6,7 @@ var angular = require('angular'),
     app_about = require('./about/about'),
     ui_bootstrap_collapse =  require('ui.bootstrap.collapse');
 
-angular.module( 'ngBoilerplate', [
+module.exports = angular.module( 'ngBoilerplate', [
   app_home.name,
   app_about.name,
   ui_router,
