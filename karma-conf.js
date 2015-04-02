@@ -26,11 +26,6 @@ module.exports = function ( karma ) {
     runnerPort: 9100,
     urlRoot: '/',
 
-    /** 
-     * Disable file watching by default.
-     */
-    autoWatch: false,
-
     /**
      * The list of browsers to launch to test on. This includes only "Firefox" by
      * default, but other browser names include:
